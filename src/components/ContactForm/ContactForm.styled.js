@@ -3,8 +3,37 @@ import styled from 'styled-components';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 25px;
   align-items: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+  }
+
+  input {
+    padding: 10px;
+    border: 1px solid rgb(241, 188, 90);
+    border-radius: 4px;
+    background-color: white;
+
+    &::placeholder {
+      color: rgba(52, 162, 212, 0.5);
+
+      font-size: 16px;
+      line-height: 1.25px;
+    }
+
+    /* color: rgba(52, 162, 212, 0.5); */
+  }
 
   button {
     display: flex;
