@@ -16,12 +16,18 @@ export class App extends Component {
     number: '',
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts } = this.state;
     return (
       <Container>
         <Section title="Contacts">
-          <ContactList contacts={contacts} />
+          <ContactList contacts={contacts} deleteContact={this.deleteContact} />
         </Section>
       </Container>
     );
