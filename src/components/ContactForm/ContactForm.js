@@ -66,6 +66,8 @@ ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
+// ======================= ванільний інпут ============================
+
 // export class ContactForm extends Component {
 //   state = {
 //     name: '',
