@@ -32,7 +32,10 @@ export const Form = styled.form`
       line-height: 1.25px;
     }
 
-    /* color: rgba(52, 162, 212, 0.5); */
+    :focus {
+      outline: 1px solid rgb(52, 162, 212);
+      border: 1px solid transparent;
+    }
   }
 
   button {
