@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { Container } from 'components/App.styled';
 import { Section } from 'components/Section/Section';
 import { ContactForm } from 'components/ContactForm/ContactForm';
+import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 
 export class App extends Component {
@@ -16,7 +17,7 @@ export class App extends Component {
     filter: '',
   };
 
-  formAddContactList = data => {
+  formAddContact = data => {
     const { contacts } = this.state;
     const { name, number } = data;
     if (contacts.some(contact => contact.name === name)) {
@@ -27,6 +28,19 @@ export class App extends Component {
     }));
   };
 
+  changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
+  };
+
+  getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
+    const normalizeFilter = filter.toLocaleLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizeFilter)
+    );
+  };
+
   deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
@@ -34,15 +48,20 @@ export class App extends Component {
   };
 
   render() {
-    const { contacts } = this.state;
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
+
     return (
       <Container>
         <Section title="Phonebook">
-          <ContactForm onSubmit={this.formAddContactList} />
+          <ContactForm onSubmit={this.formAddContact} />
         </Section>
         <Section title="Contacts">
-          {/* <Filter /> */}
-          <ContactList contacts={contacts} deleteContact={this.deleteContact} />
+          <Filter value={filter} changeFilter={this.changeFilter} />
+          <ContactList
+            contacts={visibleContacts}
+            deleteContact={this.deleteContact}
+          />
         </Section>
       </Container>
     );
