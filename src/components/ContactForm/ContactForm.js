@@ -1,7 +1,13 @@
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import * as yup from 'yup';
 import { FormWrap, FieldWrap } from './ContactForm.styled';
+
+let schema = yup.object().shape({
+  name: yup.string().required(),
+  number: yup.number().required(),
+});
 
 export const ContactForm = ({ onSubmit }) => {
   const nameInputId = nanoid();
@@ -20,6 +26,7 @@ export const ContactForm = ({ onSubmit }) => {
         name: '',
         number: '',
       }}
+      validationSchema={schema}
       onSubmit={handleFormSubmit}
     >
       <FormWrap>
@@ -34,6 +41,7 @@ export const ContactForm = ({ onSubmit }) => {
             placeholder="Rosie Simpson"
             id={nameInputId}
           />
+          <ErrorMessage component="span" name="name" />
           <label htmlFor={numberInputId}>Number</label>
           <FieldWrap
             type="tel"
@@ -44,6 +52,7 @@ export const ContactForm = ({ onSubmit }) => {
             placeholder="459-12-56"
             id={numberInputId}
           />
+          <ErrorMessage component="span" name="number" />
         </div>
         <button type="submit" disabled={false}>
           Add contact

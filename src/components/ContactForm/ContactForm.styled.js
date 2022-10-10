@@ -4,7 +4,6 @@ import { Form, Field } from 'formik';
 export const FormWrap = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   div {
     display: flex;
@@ -21,6 +20,9 @@ export const FormWrap = styled(Form)`
   }
 
   button {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +52,7 @@ export const FormWrap = styled(Form)`
 `;
 
 export const FieldWrap = styled(Field)`
+  flex-grow: 1;
   padding: 10px;
   border: 1px solid rgb(241, 188, 90);
   border-radius: 4px;
