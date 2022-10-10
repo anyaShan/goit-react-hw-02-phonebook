@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Form, Field } from 'formik';
 
-export const Form = styled.form`
+export const FormWrap = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,25 +18,6 @@ export const Form = styled.form`
     font-size: 14px;
     line-height: 1.2;
     letter-spacing: 0.06em;
-  }
-
-  input {
-    padding: 10px;
-    border: 1px solid rgb(241, 188, 90);
-    border-radius: 4px;
-    background-color: white;
-
-    &::placeholder {
-      color: rgba(52, 162, 212, 0.5);
-
-      font-size: 16px;
-      line-height: 1.25px;
-    }
-
-    :focus {
-      outline: 1px solid rgb(52, 162, 212);
-      border: 1px solid transparent;
-    }
   }
 
   button {
@@ -64,5 +46,24 @@ export const Form = styled.form`
     &:hover {
       background-color: rgb(52, 162, 212);
     }
+  }
+`;
+
+export const FieldWrap = styled(Field)`
+  padding: 10px;
+  border: 1px solid rgb(241, 188, 90);
+  border-radius: 4px;
+  background-color: white;
+
+  &::placeholder {
+    color: rgba(52, 162, 212, 0.5);
+
+    font-size: 16px;
+    line-height: 1.25px;
+  }
+
+  :focus {
+    outline: 1px solid rgb(52, 162, 212);
+    border: 1px solid transparent;
   }
 `;
