@@ -17,7 +17,11 @@ export class App extends Component {
   };
 
   formAddContactList = data => {
+    const { contacts } = this.state;
     const { name, number } = data;
+    if (contacts.some(contact => contact.name === name)) {
+      return alert(`${name} is already in contacts.`);
+    }
     this.setState(({ contacts }) => ({
       contacts: [...contacts, { id: nanoid(), name, number }],
     }));
