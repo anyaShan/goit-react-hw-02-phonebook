@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+// import PropTypes from 'prop-types';
 import { Form } from './ContactForm.styled';
 
 export class ContactForm extends Component {
@@ -65,3 +66,8 @@ export class ContactForm extends Component {
     );
   }
 }
+
+// ContactForm.propTypes = {
+//   contacts: PropTypes.arrayOf(PropTypes.object),
+//   deleteContact: PropTypes.func.isRequired,
+// };

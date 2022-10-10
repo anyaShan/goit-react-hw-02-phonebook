@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { FilterWrapper } from './Filter.styled';
 export const Filter = ({ value, changeFilter }) => {
   return (
@@ -6,4 +8,9 @@ export const Filter = ({ value, changeFilter }) => {
       <input type="text" name="filter" value={value} onChange={changeFilter} />
     </FilterWrapper>
   );
+};
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  changeFilter: PropTypes.func.isRequired,
 };
